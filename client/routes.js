@@ -16,47 +16,47 @@ if (typeof require.ensure !== 'function') {
  */
 if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
-  
-  require('./modules/Products/pages/Products');
-  require('./modules/Products/pages/mobiles/Mobiles');
+  require('./modules/Post/pages/PostListPage/PostListPage');
+  require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Products/pages/ProductList');
-  require('./modules/Cart/pages/AddCart');
-  require('./modules/Products/components/product_details');
-  require('./modules/Cart/components/Cart_details');
-  }
+  require('./modules/Cart/pages/CartList');
+  require('./modules/Products/pages/product_details/product_details');
+  require('./modules/Cart/pages/Cart_details/Cart_details');
+}
 
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
 export default (
-  <Route path="/" >
-     <IndexRoute 
+  <Route path="/">
+    <IndexRoute
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/posts/:slug-:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/products"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
             cb(null, require('./modules/Products/pages/ProductList').default);
         });
       }}
     />    
-    <Route
-      path="/products/:id"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./modules/Products/pages/mobiles/Mobiles').default);
-        });
-      }}
-    />
-    <Route
-      path="/productList"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./modules/Products/pages/ProductList').default);
-        });
-      }}
-    />
+    
     <Route
       path="/cart_details"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Cart/pages/AddCart').default);
+          cb(null, require('./modules/Cart/pages/CartList').default);
         });
       }}
     />
@@ -64,17 +64,17 @@ export default (
       path="/products_details/:id"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Products/components/product_details').default);
+          cb(null, require('./modules/Products/pages/product_details/product_details').default);
         });
       }}
     />
     <Route
-      path="/Cart_details/:id"
+      path="/product_details/:id"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Cart/components/Cart_details').default);
+          cb(null, require('./modules/Cart/pages/Cart_details/Cart_details').default);
         });
       }}
     />
-     </Route>
+  </Route>
 );
