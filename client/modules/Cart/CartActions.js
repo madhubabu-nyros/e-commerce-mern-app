@@ -23,16 +23,16 @@ export function addcartRequest(p_id) {
 
 export function getCart(cartDetails) {
   
-  return {
-    type: GET_CART,
-    cartDetails,
-  };
+    return {
+    	type: GET_CART,
+    	cartDetails,
+    };
 
 }
 export function fetchCart(data) {
 	return (dispatch) => {
-    return callApi('getCart','post').then(res => {
-      dispatch(getCart(res.data));
+    	return callApi('getCart','post').then(res => {
+      	dispatch(getCart(res.data));
     });
          
   };

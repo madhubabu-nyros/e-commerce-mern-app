@@ -45,35 +45,3 @@ export function getUsers(req, res) {
     }
   })  
 } //Get Users End 
-
-
-// //Delete Users
-// export function deleteUsers(req, res) {
-//   Users.findOne({_id:}).exec(err, user) {
-//     if(user!==null) {
-      
-//     }  
-//   }
-// }
-
-
-
-
-
-
-// export function deletePost(req, res) {
-//   Post.findOne({ cuid: req.params.cuid }).exec((err, post) => {
-//     if (err) {
-//       res.status(500).send(err);
-//     }
-
-//     post.remove(() => {
-//       res.status(200).end();
-//     });
-//   });
-// }
-
-
-
-
-

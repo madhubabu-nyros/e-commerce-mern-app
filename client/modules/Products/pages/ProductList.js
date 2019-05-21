@@ -53,7 +53,7 @@ class ProductList extends Component {
 		
     this.props.dispatch(fetchProducts());
     
-   }
+  }
   
 	render() {
         var products = this.state.products;
@@ -87,7 +87,7 @@ class ProductList extends Component {
               }
               {this.state.limit <= this.state.products.length ? <p><button  className="btn1" onClick={this.onLoadMore}>Load More</button></p> : <p className="no_prodcuts">No products Available</p>}
           </div>
-       	</div>
+      </div>
 		)
 	}
 }

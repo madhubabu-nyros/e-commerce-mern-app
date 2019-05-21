@@ -21,8 +21,6 @@ export function createCategories(req, res) {
 	})
 }
 
-
-
 export function getCategories(req, res) {
   console.log('getCategories');
   console.log('req.body', req.body);

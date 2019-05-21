@@ -2,8 +2,8 @@ import Cart from '../models/cart';
 
 // Create Cart Details Start
 export function createCart(req, res) {
-	// console.log('createCart');
-	// console.log('req.body',req.body.p_id);
+	console.log('createCart');
+	console.log('req.body',req.body.p_id);
 	var data = {product_id: req.body.p_id};
 	
 	Cart.find({product_id: req.body.p_id}).exec(function(err, product) {
@@ -29,22 +29,21 @@ export function createCart(req, res) {
 }// Create Cart Details End
 
 export function getCart(req, res) {
-  
-  Cart.find({}).populate('product_id').exec(function(err, cart) {
-    if(err){
-      res.json({
-        status: 400,
-        message: 'Some thing Went Wrong',
-        error: err
-      })
-    }else {
-      res.json({
-        status: 200,
-        message: 'Get Cart Successful',
-        data: cart
-      })
-    }
-  })  
+  	Cart.find({}).populate('product_id').exec(function(err, cart) {
+	    if(err){
+	      res.json({
+	        status: 400,
+	        message: 'Some thing Went Wrong',
+	        error: err
+	      })
+	    }else {
+	      res.json({
+	        status: 200,
+	        message: 'Get Cart Successful',
+	        data: cart
+	      })
+	    }
+  	})  
 }
 
 export function deleteCart(req, res) {
@@ -71,5 +70,4 @@ export function deleteCart(req, res) {
 			})
 		}
 	})
-
 }

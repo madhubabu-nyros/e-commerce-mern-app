@@ -20,8 +20,9 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Products/pages/Products');
   require('./modules/Products/pages/mobiles/Mobiles');
   require('./modules/Products/pages/ProductList');
-  require('./modules/Products/pages/AddCart');
-  require('./modules/Products/pages/product_details/product_details');
+  require('./modules/Cart/pages/AddCart');
+  require('./modules/Products/components/product_details');
+  require('./modules/Cart/components/Cart_details');
   }
 
 // react-router setup with code-splitting
@@ -55,7 +56,7 @@ export default (
       path="/cart_details"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Products/pages/AddCart').default);
+          cb(null, require('./modules/Cart/pages/AddCart').default);
         });
       }}
     />
@@ -63,11 +64,17 @@ export default (
       path="/products_details/:id"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Products/pages/product_details/product_details').default);
+          cb(null, require('./modules/Products/components/product_details').default);
         });
       }}
     />
-    
-    </Route>
-
+    <Route
+      path="/Cart_details/:id"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Cart/components/Cart_details').default);
+        });
+      }}
+    />
+     </Route>
 );

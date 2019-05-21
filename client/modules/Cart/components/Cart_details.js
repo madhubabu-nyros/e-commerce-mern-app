@@ -20,15 +20,13 @@ class Product_details extends Component {
 
     
   }  
-  
   onLoadMore() {
         
-    this.setState({
-      limit: this.state.limit + 4,
-    });
+      this.setState({
+         limit: this.state.limit + 4,
+      });
       
   } 
-  
   componentWillReceiveProps(nextProps){
    
     if(nextProps && nextProps.products)
@@ -36,7 +34,6 @@ class Product_details extends Component {
       this.setState({products:nextProps.products});
     }
   }
-  
   cartItem(product_id)
   {
     this.props.dispatch(addcartRequest(product_id));
@@ -48,13 +45,13 @@ class Product_details extends Component {
     
     this.props.dispatch(fetchProducts());
     
-  }
+   }
   
   render() {
   
    
     return(
-        <div>
+      <div>
             {this.state.products && this.state.products.length > 0 ?
             this.state.products.filter(mobile=> mobile._id==this.props.params.id).map((product_details, index)=>
             <div key={index}>
@@ -79,7 +76,7 @@ class Product_details extends Component {
                 </tbody>
               </table>           
             </div>
-            ): 'No Products'}
+            ): ''}
         </div>
     )
   }

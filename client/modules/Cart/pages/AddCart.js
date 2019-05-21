@@ -41,7 +41,7 @@ class AddCart extends Component {
 			  {this.state.cart && this.state.cart.length > 0 ?
 			  	this.state.cart.map((cart_details, index) =>
 				  <ul className="products" key={index}>
-				    <li><Link to={`/products_details/${cart_details.product_id._id}`}><img src={cart_details.product_id.image}/></Link></li>
+				    <li><Link to={`/Cart_details/${cart_details.product_id._id}`}><img src={cart_details.product_id.image}/></Link></li>
 				    <li>{cart_details.product_id.product_name}</li>
 				    <li>{cart_details.product_id.color}</li>
 				    <li>{cart_details.product_id.price}</li>

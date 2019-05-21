@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import * as PostController from '../controllers/post.controller';
 import * as UserController from '../controllers/user.controller';
 import * as DeliveryAddressController from '../controllers/deliveryAddress.controller';
 import * as ProductDetailsController from '../controllers/product.controller';
@@ -12,17 +11,6 @@ import * as BrandDetailsController from '../controllers/brand.controller';
 
 const router = new Router();
 
-// Get all Posts
-router.route('/posts').get(PostController.getPosts);
-
-// Get one post by cuid
-router.route('/posts/:cuid').get(PostController.getPost);
-
-// Add a new Post
-router.route('/posts').post(PostController.addPost);
-
-// Delete a post by cuid
-router.route('/posts/:cuid').delete(PostController.deletePost);
 
 //Create Users
 router.route('/createUsers').post(UserController.createUsers);
