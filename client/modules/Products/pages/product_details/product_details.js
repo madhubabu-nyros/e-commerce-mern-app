@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 // Import Actions
-import { fetchProducts ,getProducts,  addcart, addcartRequest} from '../../ProductActions';
+import { fetchProducts ,getProducts } from '../../ProductActions';
+import { addcart, addcartRequest, fetchCart } from '../../../Cart/CartActions';
+
 
 class Product_details extends Component {
   constructor (props) {
@@ -38,6 +40,7 @@ class Product_details extends Component {
   {
     this.props.dispatch(addcartRequest(product_id));
     this.setState({count: this.state.count + 1})
+    
   } 
   
      
@@ -51,11 +54,12 @@ class Product_details extends Component {
   
    
     return(
-      <div>
+      <div className="container">
+            <h1 Style="margin-left: 74px;">Product Details</h1> 
             {this.state.products && this.state.products.length > 0 ?
             this.state.products.filter(mobile=> mobile._id==this.props.params.id).map((product_details, index)=>
             <div key={index}>
-               <table>
+              <table Style= "margin-top:65px;">
                 <tbody>
                   <tr>
                       <td><img className="img" src={product_details.image} alt="image"/></td>

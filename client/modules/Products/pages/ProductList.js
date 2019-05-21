@@ -6,9 +6,7 @@ import { Link } from 'react-router';
 
 // Import Actions
 import { fetchProducts ,getProducts} from '../ProductActions';
-import { addcart, addcartRequest, fetchCart } '../../CartActions';
-// Import Selectors
-// import { getProducts } from '../ProductReducer';
+import { addcart, addcartRequest, fetchCart } from '../../Cart/CartActions';
 
 class ProductList extends Component {
   constructor (props) {
@@ -52,8 +50,9 @@ class ProductList extends Component {
 	componentDidMount() {
 		
     this.props.dispatch(fetchProducts());
+    this.props.dispatch(fetchCart());
     
-  }
+   }
   
 	render() {
         var products = this.state.products;
@@ -87,7 +86,7 @@ class ProductList extends Component {
               }
               {this.state.limit <= this.state.products.length ? <p><button  className="btn1" onClick={this.onLoadMore}>Load More</button></p> : <p className="no_prodcuts">No products Available</p>}
           </div>
-      </div>
+       	</div>
 		)
 	}
 }
@@ -98,6 +97,8 @@ ProductList.need = [() => { return fetchProducts();}];
 function mapStateToProps(state) {
    return {
     products:state.products.data,
+    cart: state.cart.cart,
+
   };
 }
 

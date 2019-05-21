@@ -37,11 +37,12 @@ class AddCart extends Component {
 
 
 		return(
-			<div>
+			<div className="container">
+			<h1>CART DETAILS</h1>
 			  {this.state.cart && this.state.cart.length > 0 ?
 			  	this.state.cart.map((cart_details, index) =>
 				  <ul className="products" key={index}>
-				    <li><Link to={`/Cart_details/${cart_details.product_id._id}`}><img src={cart_details.product_id.image}/></Link></li>
+				    <li><Link to={`/product_details/${cart_details.product_id._id}`}><img src={cart_details.product_id.image}/></Link></li>
 				    <li>{cart_details.product_id.product_name}</li>
 				    <li>{cart_details.product_id.color}</li>
 				    <li>{cart_details.product_id.price}</li>
@@ -59,9 +60,9 @@ AddCart.need = [() => { return fetchCart();}];
 
 function mapStateToProps(state) {
    return {
-   	  cart: state.products.cart,
+   	  cart: state.cart.cart,
    	  
    };
 }
 
-export default connect(mapStateToProps)(AddCart);
+export default connect(mapStateToProps)(AddCart);	

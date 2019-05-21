@@ -1,6 +1,6 @@
 import { ADD_CART, GET_CART, REMOVE_CART } from './CartActions';
 
-const initialState = { cart:[], };
+const initialState = {  cart:[], };
 
 const CartReducer = (state = initialState, action) => {
 
@@ -8,7 +8,7 @@ switch (action.type) {
 	case ADD_CART :
       return {
         ...state,
-        data: action.cart,
+        cart: action.cart,
       };
       case GET_CART :
       return {

@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 // Import Actions
-import { fetchProducts ,getProducts,  addcart, addcartRequest} from '../../ProductActions';
+import { addcart, addcartRequest, fetchCart } from '../../CartActions';
+import { fetchProducts ,getProducts } from '../../../Products/ProductActions';
 
-class Product_details extends Component {
+class CartProdcuts extends Component {
   constructor (props) {
     super(props);
     this.state ={
@@ -16,8 +17,6 @@ class Product_details extends Component {
       count: 0,
     } 
     this.onLoadMore = this.onLoadMore.bind(this);
-    this.cartItem = this.cartItem.bind(this);
-
     
   }  
   onLoadMore() {
@@ -34,28 +33,23 @@ class Product_details extends Component {
       this.setState({products:nextProps.products});
     }
   }
-  cartItem(product_id)
-  {
-    this.props.dispatch(addcartRequest(product_id));
-    this.setState({count: this.state.count + 1})
-  } 
-  
      
   componentDidMount() {
     
     this.props.dispatch(fetchProducts());
     
-   }
+  }
   
   render() {
   
    
     return(
-      <div>
+      <div className="container">
+            <h1 Style="margin-left: 74px;">Product Details</h1> 
             {this.state.products && this.state.products.length > 0 ?
             this.state.products.filter(mobile=> mobile._id==this.props.params.id).map((product_details, index)=>
             <div key={index}>
-               <table>
+               <table Style= "margin-top:65px;">
                 <tbody>
                   <tr>
                       <td><img className="img" src={product_details.image} alt="image"/></td>
@@ -70,7 +64,7 @@ class Product_details extends Component {
                         <p className="discription">{product_details.discription5}</p>
                         <p className="discription">{product_details.discription6}</p>
                         <p className="discription">{product_details.discription7}</p>
-                        <button className="btn2" onClick={()=>{this.cartItem(product_details._id)}}>Add Cart</button>
+                        <Link to='http://10.90.90.71:8000/cart_details'><button className="btn2">Back to Cart</button></Link>
                      </td>
                   </tr> 
                 </tbody>
@@ -83,7 +77,7 @@ class Product_details extends Component {
 }
 
 
-Product_details.need = [() => { return fetchProducts();}];
+CartProdcuts.need = [() => { return fetchProducts();}];
  
 function mapStateToProps(state) {
    return {
@@ -92,4 +86,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Product_details);
+export default connect(mapStateToProps)(CartProdcuts);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 // Import Actions
-import { fetchProducts ,getProducts,  addcart, addcartRequest} from '../../ProductActions';
+import { fetchProducts ,getProducts,  addcart, addcartRequest} from '../CartActions';
 
 class Product_details extends Component {
   constructor (props) {
@@ -45,11 +45,9 @@ class Product_details extends Component {
     
     this.props.dispatch(fetchProducts());
     
-   }
+  }
   
   render() {
-  
-   
     return(
       <div>
             {this.state.products && this.state.products.length > 0 ?
@@ -70,18 +68,17 @@ class Product_details extends Component {
                         <p className="discription">{product_details.discription5}</p>
                         <p className="discription">{product_details.discription6}</p>
                         <p className="discription">{product_details.discription7}</p>
-                        <button className="btn2" onClick={()=>{this.cartItem(product_details._id)}}>Add Cart</button>
+                        <button className="btn2" onClick={()=>{this.cartItem(product_details._id)}}>Back to Cart</button>
                      </td>
                   </tr> 
                 </tbody>
               </table>           
             </div>
-            ): ''}
+            ): 'No Products'}
         </div>
     )
   }
 }
-
 
 Product_details.need = [() => { return fetchProducts();}];
  
