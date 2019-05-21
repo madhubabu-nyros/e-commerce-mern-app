@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 
 
 // Import Actions
-import { fetchProducts ,getProducts,  addcart, addcartRequest, fetchCart} from '../ProductActions';
-
+import { fetchProducts ,getProducts} from '../ProductActions';
+import { addcart, addcartRequest, fetchCart } '../../CartActions';
 // Import Selectors
 // import { getProducts } from '../ProductReducer';
 

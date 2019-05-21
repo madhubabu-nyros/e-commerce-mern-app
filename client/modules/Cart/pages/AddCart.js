@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {fetchCart, removeCartRequest} from '../ProductActions';
+import {fetchCart, removeCartRequest} from '../CartActions';
 import { Link } from 'react-router';
 
 class AddCart extends Component {
